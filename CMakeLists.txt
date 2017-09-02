@@ -1,13 +1,17 @@
 cmake_minimum_required(VERSION 2.8)
 project(object_recognition_ros)
+find_package(OpenCV REQUIRED)
+find_package(PCL REQUIRED)
 
+# missing ecto_pcl?
 find_package(catkin REQUIRED cmake_modules ecto ecto_ros geometric_shapes geometry_msgs object_recognition_core
-                             object_recognition_msgs pluginlib rosbag roscpp sensor_msgs
+                             object_recognition_msgs pluginlib rosbag roscpp sensor_msgs ecto_image_pipeline  ecto_pcl
+                       opencv_candidate
                              visualization_msgs
 )
 catkin_package(INCLUDE_DIRS include
   LIBRARIES object_information_cache
-  CATKIN_DEPENDS object_recognition_core object_recognition_msgs
+  CATKIN_DEPENDS object_recognition_core object_recognition_msgs ecto_image_pipeline 
 )
 
 #install targets for all things python
